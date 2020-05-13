@@ -134,6 +134,21 @@ body {
   }
 }
 
+@keyframes moveInButton {
+  /* start */
+  0% {
+    opacity: 0;
+    /* want to begin from the right */
+    transform: translateY(30px);
+  }
+
+  /* finish */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
 /* transition is on the inital state  */
 .btn:link,
 .btn:visited {
@@ -143,6 +158,8 @@ body {
   display: inline-block;
   border-radius: 100px;
   transition: all 0.2s;
+  /* make it relative so the pseudo-element is related to this */
+  position: relative;
 }
 
 .btn:hover {
@@ -159,4 +176,39 @@ body {
 .btn-white {
   background-color: #ffffff;
   color: #777;
+}
+
+/* pseudo element - must include content even it's empty */
+/* initial state */
+.btn::after {
+  content: "";
+  display: inline-block; /*same as the element */
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  /* should be related to the button element  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index define if the element is on top or under of another */
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #ffffff;
+}
+
+/* have this pseudo-element only when we hover the button */
+.btn:hover::after {
+  /* increase the size */
+  transform: scaleX(1.4) scaleY(1.6);
+  /* make it invisible */
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInButton 0.5s ease-out 0.75s;
+  /* auto apply style to 0% before the animation starts */
+  animation-fill-mode: backwards;
 }
