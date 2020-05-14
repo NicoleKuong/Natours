@@ -1,0 +1,25 @@
+/* prevent browser adding any default margins and padding */
+/* border-box prevents borders and the paddings to be added 
+to the total width and height for a box */
+
+/* also select all pseudo element before or after*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+  /* force inheritence of box-sizing */
+  box-sizing: inherit;
+}
+
+/* root font-size is now 10px */
+/* default font-size is 16px, if use %, then 10 / 16  */
+html {
+  //This define what 1rem is
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

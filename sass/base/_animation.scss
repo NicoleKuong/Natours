@@ -1,0 +1,52 @@
+@keyframes moveInLeft {
+  /* start */
+  0% {
+    opacity: 0;
+    /* want to begin from the left */
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    /* positive value will move to the right  */
+    transform: translateX(1rem);
+  }
+  /* finish */
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  /* start */
+  0% {
+    opacity: 0;
+    /* want to begin from the right */
+    transform: translateX(10rem);
+  }
+
+  80% {
+    /* positive value will move to the right  */
+    transform: translateX(-1rem);
+  }
+  /* finish */
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInButton {
+  /* start */
+  0% {
+    opacity: 0;
+    /* want to begin from the right */
+    transform: translateY(3rem);
+  }
+
+  /* finish */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
