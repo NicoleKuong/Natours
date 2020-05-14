@@ -4,6 +4,7 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #ffffff;
+$color-black: #000;
 
 /* prevent browser adding any default margins and padding */
 /* border-box prevents borders and the paddings to be added 
@@ -49,25 +50,25 @@ body {
   position: relative;
 
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
 
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
-}
+  &__logo {
+    height: 3.5rem;
+  }
 
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* translate will make the above top, left 50% no long relate to the parent element */
-  transform: translate(-50%, -50%);
-  text-align: center;
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* translate will make the above top, left 50% no long relate to the parent element */
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 .heading-primary {
@@ -77,34 +78,34 @@ body {
   /* hidden the back part of the transform for the user, fix shakey*/
   backface-visibility: hidden;
   margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
 
-  animation: moveInLeft 1s;
-  animation-timing-function: ease-out;
-  /* 
-  wait before the animation starts
-  animation-delay: 3s;
+    animation: moveInLeft 1s;
+    animation-timing-function: ease-out;
+    /* 
+    wait before the animation starts
+    animation-delay: 3s;
+  
+    how many times the animation happens
+    animation-iteration-count: 3;
+  
+    how the animation comes in and out
+    animation-timing-function: ease; */
+  }
 
-  how many times the animation happens
-  animation-iteration-count: 3;
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
 
-  how the animation comes in and out
-  animation-timing-function: ease; */
-}
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-
-  animation: moveInRight 1s ease-out;
+    animation: moveInRight 1s ease-out;
+  }
 }
 
 @keyframes moveInLeft {
@@ -160,67 +161,69 @@ body {
   }
 }
 
-/* transition is on the inital state  */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  /* make it relative so the pseudo-element is related to this */
-  position: relative;
-  font-size: 1.6rem;
-}
+.btn {
+  /* transition is on the inital state  */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    /* make it relative so the pseudo-element is related to this */
+    position: relative;
+    font-size: 1.6rem;
+  }
 
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-/* when we click an element */
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+    /* have this pseudo-element only when we hover the button */
+    &::after {
+      /* increase the size */
+      transform: scaleX(1.4) scaleY(1.6);
+      /* make it invisible */
+      opacity: 0;
+    }
+  }
 
-.btn--white {
-  background-color: $color-white;
-  color: $color-grey-dark;
-}
+  /* when we click an element */
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
 
-/* pseudo element - must include content even it's empty */
-/* initial state */
-.btn::after {
-  content: "";
-  display: inline-block; /*same as the element */
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  /* should be related to the button element  */
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* z-index define if the element is on top or under of another */
-  z-index: -1;
-  transition: all 0.4s;
-}
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
 
-.btn--white::after {
-  background-color: $color-white;
-}
+    &::after {
+      background-color: $color-white;
+    }
+  }
 
-/* have this pseudo-element only when we hover the button */
-.btn:hover::after {
-  /* increase the size */
-  transform: scaleX(1.4) scaleY(1.6);
-  /* make it invisible */
-  opacity: 0;
-}
+  /* pseudo element - must include content even it's empty */
+  /* initial state */
+  &::after {
+    content: "";
+    display: inline-block; /*same as the element */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* should be related to the button element  */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* z-index define if the element is on top or under of another */
+    z-index: -1;
+    transition: all 0.4s;
+  }
 
-.btn--animated {
-  animation: moveInButton 0.5s ease-out 0.75s;
-  /* auto apply style to 0% before the animation starts */
-  animation-fill-mode: backwards;
+  &--animated {
+    animation: moveInButton 0.5s ease-out 0.75s;
+    /* auto apply style to 0% before the animation starts */
+    animation-fill-mode: backwards;
+  }
 }
