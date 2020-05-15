@@ -1,0 +1,38 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color: $color-black, $alpha: 0.1);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem; // since the shape translates 3rem to the left, we add back 3rem of padding-left
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  // & > * {
+  //     transform: skewX(12deg);
+  // }
+  // this doesn't work on its own because the children elements can only have 1 transform property; we have to do the unskewing manually
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    background-color: orangered;
+    float: left; // only works with there's a width and a height
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(
+      50% at 50% 50%
+    ); // radius: 50% of the specified width; center of the circle: 50% 50%
+
+    clip-path: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); // translateX adds space between the shape and text; DO NOT MESS WITH MARGIN
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+}
