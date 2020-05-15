@@ -1,0 +1,58 @@
+.card {
+  perspective: 150rem; // this only works on the child element, so we need a new div .card__side
+  -moz-perspective: 150rem; // firefox
+  position: relative;
+  height: 50rem; // add height for perspective; needs to be the same as child height
+
+  &__side {
+    height: 50rem;
+    transition: all 0.8s ease;
+    position: absolute; // takes cards out of the natural flow, loses perspective; solution: parent needs same height
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden; // hides the back-part of element (we don't see inverted text)
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+}
