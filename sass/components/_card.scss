@@ -1,11 +1,12 @@
 .card {
+  //FUNTIONALITY
   perspective: 150rem; // this only works on the child element, so we need a new div .card__side
   -moz-perspective: 150rem; // firefox
   position: relative;
-  height: 50rem; // add height for perspective; needs to be the same as child height
+  height: 52rem; // add height for perspective; needs to be the same as child height
 
   &__side {
-    height: 50rem;
+    height: 52rem;
     transition: all 0.8s ease;
     position: absolute; // takes cards out of the natural flow, loses perspective; solution: parent needs same height
     top: 0;
@@ -13,6 +14,7 @@
     width: 100%;
     backface-visibility: hidden; // hides the back-part of element (we don't see inverted text)
     border-radius: 3px;
+    overflow: hidden; // so that the image doesn't cover the border-radiuss
     box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
 
     &--front {
@@ -49,10 +51,81 @@
   }
 
   &:hover &__side--front {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
   }
 
   &:hover &__side--back {
     transform: rotateY(0);
+  }
+
+  //FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen; // only on chrome, safari, and firefox
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: url(../img/nat-5.jpg);
+    }
+
+    &--3 {
+      background-image: url(../img/nat-5.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone; // this treats each of the separated lines as its own element having its own properties (padding), otherwise the padding is strange
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
   }
 }
