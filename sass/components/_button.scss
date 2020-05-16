@@ -1,5 +1,6 @@
 .btn {
   /* transition is on the inital state  */
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -11,6 +12,10 @@
     /* make it relative so the pseudo-element is related to this */
     position: relative;
     font-size: $default-font-size;
+
+    //change for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -27,7 +32,9 @@
   }
 
   /* when we click an element */
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
