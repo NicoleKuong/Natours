@@ -26,9 +26,6 @@ html {
 
   // ORDER IS KEY: larger breakpoint > smaller
   //if 700px, both applies, the last declaration will apply  ** so smaller breakpoint should be place later
-  @include respond(big-desktop) {
-    font-size: 75%; //1rem = 12px, 12/16 = 75
-  }
 
   @include respond(tab-land) {
     //wdith <1200
@@ -38,6 +35,10 @@ html {
   @include respond(tab-port) {
     //width <900
     font-size: 50%; //1rem = 8px, 8/16 = 50
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px, 12/16 = 75
   }
 }
 

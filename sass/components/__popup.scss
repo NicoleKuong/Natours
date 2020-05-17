@@ -11,6 +11,10 @@
   visibility: hidden;
   transition: all 0.3s;
 
+  //blur the background
+  backdrop-filter: blur(10px);
+  background-color: rgba($color: $color-black, $alpha: 0.3);
+
   &__content {
     @include absCenter;
 
