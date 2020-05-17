@@ -32,6 +32,11 @@
   &__left {
     width: 33.333333333%;
     display: table-cell; // child element: table-cell; this makes left and right the same height, easy for vertical align center
+
+    @include respond(tab-land) {
+      display: table-row;
+      width: 50%;
+    }
   }
 
   &__right {
@@ -40,11 +45,28 @@
     display: table-cell; // child element: table-cell
     vertical-align: middle;
     padding: 3rem 5rem;
+
+    width: 50%;
+    padding: 3rem;
   }
 
   &__img {
     display: block;
     width: 100%;
+
+    &:first-child {
+      @include respond(tab-land) {
+        float: left;
+        width: 51%;
+      }
+    }
+
+    &:last-child {
+      @include respond(tab-land) {
+        float: right;
+        width: 49%;
+      }
+    }
   }
 
   &__text {
@@ -65,6 +87,7 @@
     hyphens: auto; // need to define document language;
   }
 
+  //Open states
   &:target {
     // when the anchor brings to this target
     opacity: 1;
