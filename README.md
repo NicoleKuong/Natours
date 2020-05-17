@@ -1,6 +1,6 @@
 # :earth_americas: Natours :earth_americas:
 
-:airplane:[Checkout the deployed version here!](https://heuristic-lalande-066c0e.netlify.app/):airplane:
+## :airplane:[Checkout the deployed version here!](https://heuristic-lalande-066c0e.netlify.app/):airplane:
 
 ## What this project is about
 
@@ -18,7 +18,7 @@ This individual project showcases the use of **Sass**, **responsive design**, **
 
 ![Screenshot_Natours_1](https://user-images.githubusercontent.com/48523895/82157405-881c9880-9881-11ea-999e-c24df5cc5d96.png)
 ![Screenshot_Natours_2](https://user-images.githubusercontent.com/48523895/82157429-ad110b80-9881-11ea-9b36-2e6ba2d28ef7.png)
-![Natours_gif](https://github.com/NicoleKuong/Natours/blob/master/src/img/Natours_GIF.gif)
+![Natours_gif](https://github.com/NicoleKuong/Natours/blob/master/img/Natours_GIF.gif)
 
 ## Technologies used
 
