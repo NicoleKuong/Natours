@@ -21,7 +21,7 @@
     display: table; // parent element: table
     overflow: hidden;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.25);
+    transform: translate(-50%, -50%) scale(0.25); // there can only be one transform, so we need to manually repeat the one from mixin
     transition: all 0.5s 0.2s;
   }
 

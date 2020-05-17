@@ -17,9 +17,35 @@ to the total width and height for a box */
 /* default font-size is 16px, if use %, then 10 / 16  */
 html {
   //This define what 1rem is
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem = 10px
+
+  // this is not needed because the screen is lower than 900px, and also 50% font-size
+  // @include respond(phone) {
+  //   font-size: 50%;
+  // }
+
+  // ORDER IS KEY: larger breakpoint > smaller
+  //if 700px, both applies, the last declaration will apply  ** so smaller breakpoint should be place later
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px, 12/16 = 75
+  }
+
+  @include respond(tab-land) {
+    //wdith <1200
+    font-size: 56.25%; //1rem = 9px, 9/16 = 56.25
+  }
+
+  @include respond(tab-port) {
+    //width <900
+    font-size: 50%; //1rem = 8px, 8/16 = 50
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
